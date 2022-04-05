@@ -1,14 +1,18 @@
-let greeting = document.getElementById('greeting')
-let guess_num = document.getElementById('guess_num')
-let win = document.getElementById('win')
-let lose = document.getElementById('lose')
-
-guess_num.hidden = true
-win.hidden = true
-lose.hidden = true
-
+let blocks = document.getElementsByClassName('main_window')[0].children
 let range = document.getElementById('range')
 let count_calc = document.getElementById('count_calc')
+let counter = document.getElementById('counter')
+let current_num = document.getElementById('current_num')
+let difference
+
+const hideAllExcept = (el) => {
+    for (let i=0; i < blocks.length; i++) {
+        if (blocks[i] == el) blocks[i].hidden = false
+        else blocks[i].hidden = true
+    }
+}
+hideAllExcept(blocks[0])
+
 range.value = 100
 range.onchange = () => {
     let i = 1
@@ -16,45 +20,39 @@ range.onchange = () => {
         if (Math.pow(2, i) > +range.value) break
         i += 1
     }
-    document.getElementById('count_calc').textContent = i
-    console.log(typeof +range.value)
-    console.log(Math.pow(2, i))
+    count_calc = i
 }
-let start_btm = greeting.children[2]
+
+let start_btm = blocks[0].lastElementChild
 start_btm.onclick = () => {
-    greeting.hidden = true
-    guess_num.hidden = false
-    document.getElementById('counter').textContent = 0
-    document.getElementById('current_num').textContent = range.value / 2
+    hideAllExcept(blocks[1])
+    counter.textContent = 0
+    current_num.textContent = +range.value / 2
+    difference = +range.value / 2
 }
 
+let less_btn = document.getElementById('less_than')
+let more_btn = document.getElementById('more_than')
+let guessed_btn = document.getElementById('guessed')
 
-let less_than = document.getElementById('less_than')
-let more_than = document.getElementById('more_than')
-let guessed = document.getElementById('guessed')
-let counter = +document.getElementById('counter').textContent
-let current_num = document.getElementById('current_num').textContent
-
-
-less_than.onclick = () => {
-    counter = +counter + 1
-    current_num = Math.round(+current_num - Math.round(+range.value/Math.pow(2,counter + 1)))
-    document.getElementById('current_num').textContent = current_num
-    document.getElementById('counter').textContent = counter
+less_btn.onclick = () => {
+    difference = Math.floor(Math.abs(difference) / 2)
+    counter.textContent = +counter.textContent + 1
+    current_num.textContent = +current_num.textContent - difference
 }
-more_than.onclick = () => {
-    counter = +counter + 1
-    current_num = Math.round(+current_num + Math.round(+range.value/Math.pow(2,counter + 1)))
-    document.getElementById('current_num').textContent = current_num
-    document.getElementById('counter').textContent = counter
+more_btn.onclick = () => {
+    difference = Math.floor(Math.abs(difference) / 2)
+    counter.textContent = +counter.textContent + 1
+    current_num.textContent = +current_num.textContent + difference
 }
-guessed.onclick = () => {
-    win.hidden = false
-    document.getElementById('final_count').textContent = counter
-    guess_num.hidden = true
+guessed_btn.onclick = () => {
+    document.getElementById('final_count').textContent = counter.textContent
+    hideAllExcept(blocks[2])
 }
-win.lastElementChild.onclick = () => {
-    win.hidden = true
-    greeting.hidden = false
+blocks[2].lastElementChild.onclick = () => {
+    hideAllExcept(blocks[0])
+}
+blocks[3].lastElementChild.onclick = () => {
+    hideAllExcept(blocks[0])
 }
 
