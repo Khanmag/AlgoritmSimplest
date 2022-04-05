@@ -1,0 +1,33 @@
+* {
+    margin: 7px auto;
+    font-family: 'Comfortaa', cursive;
+    font-size: 20px;
+}
+
+.main_window div {
+    max-width: 800px;
+    border: 1px solid black;
+}
+#greeting * {
+    max-width: 380px;
+}
+#greeting {
+    display: flex;
+    flex-direction: column;
+}
+button {
+    border: none;
+    border-radius: 7px;
+    min-height: 40px;
+    background-color: rgba(165, 227, 228, 0.493);
+}
+button:hover {
+    background-color: rgba(165, 227, 228, 0.781);
+    cursor: pointer;
+}
+input {
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(204, 200, 200, 0.24);
+    max-width: max-content;
+}

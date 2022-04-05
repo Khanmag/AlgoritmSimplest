@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main_window">
+        <div id="greeting">
+            <p>Выберите диапазон загадываемого числа<br>от 1 до <input id="range" type="number"></p>
+            <p>Мне понадобится максимум <span id="count_calc">7</span> ходов</p>
+            <button>Приступим</button>
+        </div>
+        <div id="guess_num">
+            <p>Ваше число <span id="current_num"></span>?</p>
+            <p>Ходов сделано: <span id="counter">0</span></p>
+            <button id="less_than">Меньше</button>
+            <button id="more_than">Больше</button>
+            <button id="guessed">Угадали!</button>
+        </div>
+        <div id="win">
+            <p>Чудесно! Мы угадали за <span id="final_count">0</span> ходов</p>
+            <p>Хотите сыграть ещё разок?</p>
+            <button>Вперёд</button>
+        </div>
+        <div id="lose">
+            <p>Кадется вы лукавили или нажали не ту кнопку</p>
+            <p>Требую реванша!</p>
+            <button>Вперёд</button>
+        </div>
+    </div>
+
+
+    <script src="/script.js"></script>
+</body>
+</html>
