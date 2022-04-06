@@ -29,3 +29,13 @@ input {
     background-color: rgba(204, 200, 200, 0.24);
     max-width: max-content;
 }
+#guess_num button{
+    width: 100px;
+}
+.guessed_btn {
+    min-width: 205px;
+    background-color: rgba(152, 202, 191, 0.493);
+}
+span {
+    font-weight: 700;
+}
